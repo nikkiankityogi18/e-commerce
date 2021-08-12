@@ -1,0 +1,31 @@
+<nav className="navbar navbar-expand-lg navbar-light bg-light">
+  <div className="container-fluid">
+    <a className="navbar-brand" href="#">MyStore</a>
+    <buthrefn className="navbar-hrefggler" type="buthrefn" data-bs-hrefggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="hrefggle navigation">
+      <span className="navbar-hrefggler-icon"></span>
+    </buthrefn>
+    <div className="collapse navbar-collapse" id="navbarNavDropdown" >
+      <ul className="navbar-nav " >
+        <li className="nav-item">
+          <a className="nav-a active" aria-current="page" href="#">Home</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-a" href="#">Login</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-a" href="#">SignUp</a>
+        </li>
+        <li className="nav-item dropdown">
+          <a className="nav-a dropdown-hrefggle" href="#" id="navbarDropdownMenua" role="buthrefn" data-bs-hrefggle="dropdown" aria-expanded="false">
+            Profile
+          </a>
+          <ul className="dropdown-menu " aria-labelledby="navbarDropdownMenua">
+            <li><a className="dropdown-item" href="#">Logout</a></li>
+            <li><a className="dropdown-item" href="#">AboutMe</a></li>
+            <li><a className="dropdown-item" href="#">MyOrders</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
