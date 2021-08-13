@@ -41,7 +41,7 @@ const Login = () => {
             </div>
             <div className="card-body">
 
-              <form>
+              <form method="post">
 
                 <div className="form-group mb-3">
                   <label>Email Id</label>

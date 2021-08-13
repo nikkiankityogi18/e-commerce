@@ -3,8 +3,10 @@ import Navbar from "./component/Navbar";
 import Login from "./component/Login";
 import Register from "./component/Register";
 import Home from "./component/Home";
-import ProdectDetail from "./component/Prodectdetial.js";
+import Productdetail from "./component/Productdetail.js";
+import Cart from "./Cart";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 
 function App() {
   return (
@@ -16,7 +18,7 @@ function App() {
           <Route exact path="/"> <Home />  </Route>                   
         </Switch>
         <Switch>
-          <Route path="/prodectdetail/:id"> <ProdectDetail />  </Route>                   
+      <Route path="/productdetail/:id"> <Productdetail/> </Route>                   
         </Switch>
 
         <Switch>
@@ -26,9 +28,14 @@ function App() {
           <Switch>
           <Route path="/register"> <Register /> </Route>
           </Switch>
+          <Switch>
+          <Route path="/cart/:id?"> <Cart /> </Route>
+          </Switch>
 
         
       </Router>
+      
+
     </div>
   );
 }
