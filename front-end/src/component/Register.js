@@ -1,9 +1,11 @@
 import { React , useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import axios from "axios";
+import { useHistory } from "react-router-dom"
 
 
 const Register = () => {
+  const history = useHistory()
   const [user, setUser] = useState({
     name:"",
     email:"",
@@ -20,13 +22,15 @@ const Register = () => {
     console.log(name,value)
   }
   
-  const register = () => {
+  const register = (event) => {
+    event.preventDefault();
     const { name, email, password, confirm_password } = user
     if( name && email && password && (password === confirm_password)){
         axios.post("http://localhost:9000/register", user)
         .then( res => {
+         
             alert(res.data.message)
-            // history.push("/login")
+            history.push("/login")
         })
     } else {
         alert("invlid input")
@@ -35,7 +39,7 @@ const Register = () => {
 }
 
   return (
-    <div className="container py-5" >
+    <div className="container py-5" style={{width:"30rem"}} >
     <div className="row justify-content-center">
     <div className="coloum md-6">
     {/* style={{ width: '18rem' }} */}

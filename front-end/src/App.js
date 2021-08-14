@@ -4,9 +4,9 @@ import Login from "./component/Login";
 import Register from "./component/Register";
 import Home from "./component/Home";
 import Productdetail from "./component/Productdetail.js";
-import Cart from "./Cart";
+import Create from "./component/Create"
+import Cart from "./component/Cart";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 
 function App() {
   return (
@@ -27,6 +27,9 @@ function App() {
         
           <Switch>
           <Route path="/register"> <Register /> </Route>
+          </Switch>
+          <Switch>
+          <Route path="/create"> <Create /> </Route>
           </Switch>
           <Switch>
           <Route path="/cart/:id?"> <Cart /> </Route>

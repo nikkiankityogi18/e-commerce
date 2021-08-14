@@ -9,22 +9,23 @@ const Home = () => {
     return (
             
         <div classNameName="products" style={{margin:"1rem"}}>
-      { data.products.map(product=>
+        
+      { data.products.map(product =>
 
   <div className="product" style={{width: "18rem",margin:"0.5rem",display:"inline-block"}}>
 
      <div className="card " >
-  <img src={product.image} className="card-img-top" alt="product pics"/>
+  <img src={product.image} className="card-img-top " alt="product pics"/>
   <div className="card-body">
 
-    <Link className="card-title" to={'/productdetail/' + product._id} style={{textDecoration:"none",fontWeight:"bold"}}>{product.title}</Link>
+    <Link className="card-title mx-3" to={'/productdetail/' + product._id} style={{textDecoration:"none",fontWeight:"bold"}}>{product.title}</Link>
 
-    <h6 className="card-title mt-2">${product.price}</h6>
+    <h6 className="card-title mt-2 mx-3">${product.price}</h6>
 
-    <p className="card-text">{product.description}</p>
+    {/* <p className="card-text">{product.description}</p> */}
 
     <Link  to={'/productdetail/' + product._id}>
-          <button  className="btn btn-primary" >View detail</button>
+          <button  className="btn btn-primary mt-3 mx-3" >View detail</button>
     </Link>
            
   </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import data from './data';
 import {withRouter} from 'react-router';
 import {Link} from 'react-router-dom';
-import './productdetail.css'
+
 
 function Productdetail(props) {
 const product = data.products.find((x) => x._id === props.match.params.id);
@@ -13,7 +13,7 @@ return (
       {/* 1st coloum */}
      
        <div>
-         <img src={product.image} alt="productimg"></img>
+         <img src={product.image} alt="productimg"/>
          <div className="title mx-5"><h5>{product.title}</h5></div>
           <div>
         <Link to="/">Back to page</Link>
@@ -44,9 +44,19 @@ return (
       <div className="col mt-5 ">
 
       <ul class="list-group ">
+      
   <li class="list-group-item">Price: ${product.price}</li>
+  <li class="list-group-item">
+          qty   : <select>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+          </select>
+      </li>
   
-  <li class="list-group-item"><button type="button" class="btn btn-success">Add To Cart</button></li>
+  <li  class="list-group-item"><Link to="/cart" alt=''><button type="button" class="btn btn-success" onClick="/cart">Add To Cart</button></Link></li>
   
   
 </ul>

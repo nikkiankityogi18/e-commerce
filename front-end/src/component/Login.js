@@ -1,10 +1,11 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-// import { useHistory } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 
 
 const Login = () => {
+  const history = useHistory()
     const [user, setUser] = useState({
         
         email:"",
@@ -21,18 +22,18 @@ const Login = () => {
         console.log(name,value)
       }
 
-      const login = () => {
+      const login = (event) => {
+        event.preventDefault();
         axios.post("http://localhost:9000/login", user)
         .then( res => {
-
-           console.log(res, res.data.message)
-            
+          alert(res.data.message);
+          history.push("/");
         })
     }
 
 
   return (
-    <div className="container py-5">
+    <div className="container py-5" style={{width:"30rem"}}>
       <div className="row justify-content-center">
         <div className="coloum md-6">
           <div className="card">
@@ -67,10 +68,12 @@ const Login = () => {
                   />
                 </div>
 
-                <div className="form-group mb-3">
+                <div className="form-group mb-3 ">
                   <button type="submit" className="btn btn-dark" onClick={login}>
                     Login
                   </button>
+                  
+                
                 </div>
               </form>
             </div>
