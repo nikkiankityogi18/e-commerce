@@ -6,6 +6,9 @@ import Home from "./component/Home";
 import Productdetail from "./component/Productdetail.js";
 import Create from "./component/Create"
 import Cart from "./component/Cart";
+import Orders from "./component/Orders";
+
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -32,7 +35,10 @@ function App() {
           <Route path="/create"> <Create /> </Route>
           </Switch>
           <Switch>
-          <Route path="/cart/:id?"> <Cart /> </Route>
+          <Route path="/cart"> <Cart /> </Route>
+          </Switch>
+          <Switch>
+          <Route path="/orders"> <Orders /> </Route>
           </Switch>
 
         

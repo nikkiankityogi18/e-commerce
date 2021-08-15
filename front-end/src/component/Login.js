@@ -1,8 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-import { Link, useHistory } from "react-router-dom"
-
+import { useHistory } from "react-router-dom"
 
 const Login = () => {
   const history = useHistory()
@@ -23,9 +22,10 @@ const Login = () => {
       }
 
       const login = (event) => {
-        event.preventDefault();
+        event.preventDefault(); 
         axios.post("http://localhost:9000/login", user)
         .then( res => {
+          localStorage.setItem('LoginData',JSON.stringify(user));
           alert(res.data.message);
           history.push("/");
         })

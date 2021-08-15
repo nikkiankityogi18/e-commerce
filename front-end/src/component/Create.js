@@ -13,7 +13,6 @@ export const Create = () => {
       })
 
       const handleChange=(e)=>{
-   
         const{name,value} = e.target
         setProduct({
           ...product,

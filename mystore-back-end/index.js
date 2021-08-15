@@ -1,13 +1,8 @@
-// var express = require('express')
-// var cors = require('cors')
-// const mongoose = require('mongoose');
+
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 // import Product from "./models/productModels";
-
-
-
 
 const app = express();
 app.use(express.json())
@@ -45,9 +40,31 @@ mongoose.connect("mongodb://localhost:27017/mystore_database", {
 
     const Product = new mongoose.model("Product", productSchema)
 
+    const orderSchema = new mongoose.Schema({
+        address: String,
+        price: String,
+        user: String,
+        products: [],
+    })
 
+    const Order = new mongoose.model("Order", orderSchema)
    
-//Routes
+//Routes Login
+app.post("/login", (req, res)=> {
+    
+    const { email, password} = req.body
+    User.findOne({ email: email}, (err, user) => {
+        if(user){
+            if(password === user.password ) {
+                res.send({message: "Login Successfull", user: user})
+            } else {
+                res.send({ message: "Password didn't match"})
+            }
+        } else {
+            res.send({message: "User not registered"})
+        }
+    })
+}) 
 
 // Register routes
 
@@ -76,25 +93,16 @@ app.post("/register", (req, res)=> {
 
 //product fatch api
 
-app.get("/",async(req,res)=>{
+   app.get("/GetProduct",async(req,res)=>{
         const products=await Product.find({});
         res.send(products)
     })
-
-
-//create new prodect //route for products
+//Add new prodect //route for products
 
 app.post("/create", (req, res)=> {
     const {title,image,price,description} = req.body
 
-    // Product.findOne({title: title}, (err, product) => {
-    //     if(product){
-    //         res.send({message: "User already registerd"})
-    //     } else {
-    
-            
-    //     }
-    // })
+   
     const product = new Product({
         title,image,price,description
      })
@@ -107,32 +115,34 @@ app.post("/create", (req, res)=> {
      })
     
 }) 
-         
+  
+//order store 
+
+app.post("/createorder", (req, res)=> {
+
+    const {address,price,user,products} = req.body
+    const order = new Order({
+        address: address,
+        price: price,
+        user:user,
+        products:products,
+     })
+     order.save(err => {
+         if(err) {
+             res.send(err)
+         } else {
+             res.send( { message: "Successfully created order" })
+         }
+     })
     
-    
- 
-// app.get("/",async(req,res)=>{
-//     const products=await Product.find({});
-//     res.send(products)
-// })
-// app.post("/",async(req,res)=>{
-//     const products=await Product({
-//         title:req.body.title,
-//         image:req.body.title,
-//         price:req.body.title,
-//         description:req.body.title,
+}) 
 
+//fatch order detail
 
-//     })
-//     const newProduct=await Product.save();
-//     if(newProduct){
-//      return   res.status(201).send({message:"new product created",data:newProduct})
-//     }
-//     return res.status(500).send({message:"error in creating new product"})
-// })
-
-
-
+app.get("/GetOrder",async(req,res)=>{
+    const Orders=await Order.find({});
+    res.send(Orders)
+})
 app.listen(9000, () => {
     console.log("Be start at port number 9000")
 })
