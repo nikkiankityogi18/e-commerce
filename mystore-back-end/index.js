@@ -1,4 +1,6 @@
-
+// var express = require('express')
+// var cors = require('cors')
+// const mongoose = require('mongoose');
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
@@ -49,9 +51,9 @@ mongoose.connect("mongodb://localhost:27017/mystore_database", {
 
     const Order = new mongoose.model("Order", orderSchema)
    
-//Routes Login
+//Routes
 app.post("/login", (req, res)=> {
-    
+    debugger;
     const { email, password} = req.body
     User.findOne({ email: email}, (err, user) => {
         if(user){
@@ -97,12 +99,19 @@ app.post("/register", (req, res)=> {
         const products=await Product.find({});
         res.send(products)
     })
-//Add new prodect //route for products
+//create new prodect //route for products
 
 app.post("/create", (req, res)=> {
     const {title,image,price,description} = req.body
 
-   
+    // Product.findOne({title: title}, (err, product) => {
+    //     if(product){
+    //         res.send({message: "User already registerd"})
+    //     } else {
+    
+            
+    //     }
+    // })
     const product = new Product({
         title,image,price,description
      })
@@ -115,8 +124,7 @@ app.post("/create", (req, res)=> {
      })
     
 }) 
-  
-//order store 
+         
 
 app.post("/createorder", (req, res)=> {
 
@@ -136,13 +144,13 @@ app.post("/createorder", (req, res)=> {
      })
     
 }) 
-
-//fatch order detail
-
 app.get("/GetOrder",async(req,res)=>{
-    const Orders=await Order.find({});
-    res.send(Orders)
+    const orders=await Order.find({});
+    res.send(orders)
 })
+
+
+
 app.listen(9000, () => {
     console.log("Be start at port number 9000")
 })

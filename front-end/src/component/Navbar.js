@@ -23,9 +23,10 @@ function Navbar ()  {
         <li className="nav-item">
           <Link className="nav-link" to="/create">Create Product</Link>
         </li>
-        {/* <li className="nav-item">
-          <Link className="nav-link" to="/create">Cart</Link>
-        </li> */}
+        <li className="nav-item">
+          <Link className="nav-link" to="/order">My Order</Link>
+        </li>
+        
        
       </ul>
     </div>

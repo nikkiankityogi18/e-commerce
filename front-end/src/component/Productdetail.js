@@ -11,6 +11,8 @@ const [cart, setCart] = useState([]);
 useEffect(() => {
   getProductbyId(props.match.params.id);
 });
+
+
 const getProductbyId = (Id) => {
   let cartData = JSON.parse(localStorage.getItem('CartData'));
   if(cartData)
@@ -21,6 +23,8 @@ const getProductbyId = (Id) => {
     setProduct(res.data.find((x) => x._id === Id));
   });
 };
+
+
 const AddCart = (event) => {
   event.preventDefault();
   let cartData = JSON.parse(localStorage.getItem('CartData'));
@@ -29,6 +33,7 @@ const AddCart = (event) => {
   localStorage.setItem('CartData',JSON.stringify(cartData));
   setCart(cartData);
 }
+
  const openCart=()=>{
   let LoginData = JSON.parse(localStorage.getItem('LoginData'));
   if(LoginData==null)
@@ -81,17 +86,11 @@ return (
       <ul className="list-group ">
       
   <li className="list-group-item">Price: ${product.price}</li>
-  <li className="list-group-item">
-          qty   : <select>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-          </select>
-      </li>
+
   
   <li  className="list-group-item"><button type="button" className="btn btn-success"  onClick={AddCart}>Add To Cart</button></li>
+  <li  className="list-group-item"><button type="button m-1" className="btn btn-success"  onClick={openCart}>Cart <img src="/image/cart.svg" alt=""/>  : {cart.length}</button></li>
+  
   
   
 </ul>

@@ -10,7 +10,7 @@ const Orders = (props) => {
    const getOrders = () => {
     let LoginData = JSON.parse(localStorage.getItem('LoginData'));
     axios.get("http://localhost:9000/GetOrder").then((res) => {
-        debugger;
+        
         const data=res.data.filter((x) => x.user === LoginData.email);
         setOrder(data==null?[]:data);
     });
